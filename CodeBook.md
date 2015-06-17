@@ -574,6 +574,31 @@ So in the x_extracted data frame we will have 69 columns.
 
 Now we get to generating average for each variable for each volunteer for each activity using reshape2 and dplyr package functions:- melt and ddply.
 
+The following are the variables used in the script
+
+features_list - data frame consisting of the list of the variables
+x_test <- data frame consisting of the test data
+x_train <- data frame consisting of the training data
+y_test <- data frame consisting of the test labels
+y_train <- data frame consisting of the training labels
+test_comb <- containing cbinded data of x_test and y_test
+train_comb <- containing cbinded data of x_train and y_train
+sub_train <- data frame consisting of the training subject ids
+sub_test <- data frame consisting of the test subject ids
+test_comb <- containing cbinded data of test_comb and sub_test
+train_comb <- containing cbinded data of train_comb and sub_train
+x_merged <- data obtained by merging  test_comb and train_comb
+srch <- vector contianing words to be grepped
+mod_col_names <- modified column names
+res <- logical vector denoting if the column name contains the "srch" words
+vars <- columns which are matched
+x_extracted <- data frame containing only the vars columns
+labels <- containing data from activity labels
+a0 <- data reschaped
+a1 <- data contianing the averages
+a3 <- casting data to one volunteer and one activity rows
+
+
 The coding is done taking into consideration the format of the input files. Any change in the format of the files may require changes in the script
 
 
