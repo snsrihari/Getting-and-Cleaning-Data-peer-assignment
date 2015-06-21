@@ -598,6 +598,15 @@ a0 <- data reschaped
 a1 <- data contianing the averages
 a3 <- casting data to one volunteer and one activity rows
 
+a0 is computed by the following method
+a0 <- melt(x_extracted,id=c("volunteer_id","activity_label","activity_id"))
+It could also be done using the following
+a0 <- melt(x_extracted,id=c("volunteer_id","activity_label"))
+
+Then a1 by ddply(a0,.(volunteer_id,activity_label,variable),summarize,mean=mean(value)).
+This is because we want to combine volunteer_id,activity_label as one variable and then summarize over it to create one more value with mean as "value".
+
+Then a3 by dcast(a1,volunteer_id + activity_label ~ variable,value.var="mean"). This casts each "volunteer id" and "activity label" into one row along with values for the 66 variables (mean and std) ones.
 
 The coding is done taking into consideration the format of the input files. Any change in the format of the files may require changes in the script
 
